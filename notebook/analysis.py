@@ -135,6 +135,64 @@ summary = freq_df.merge(bayes_df, on="metric")
 summary.to_csv(OUT / "summary.csv", index=False, encoding="utf-8-sig")
 print(f"\nsaved: {OUT/'summary.csv'}")
 
+# Aggregates used by the Streamlit app
+agg = pd.DataFrame([
+    {"version": v,
+     "n_users": int((df["version"]==v).sum()),
+     "retention_1_rate": df.loc[df["version"]==v, "retention_1"].mean(),
+     "retention_7_rate": df.loc[df["version"]==v, "retention_7"].mean(),
+     "retention_1_count": int(df.loc[df["version"]==v, "retention_1"].sum()),
+     "retention_7_count": int(df.loc[df["version"]==v, "retention_7"].sum()),
+     "gamerounds_mean": df.loc[df["version"]==v, "sum_gamerounds"].mean(),
+     "gamerounds_median": df.loc[df["version"]==v, "sum_gamerounds"].median()}
+    for v in ["gate_30", "gate_40"]
+])
+agg.to_csv(OUT / "aggregates.csv", index=False, encoding="utf-8-sig")
+print(f"saved: {OUT/'aggregates.csv'}")
+
+# Bootstrap distributions (10K samples, ~160KB)
+boot_df = pd.DataFrame({
+    f"{m}_diff_pp": boot_data[m][0] * 100
+    for m in ["retention_1", "retention_7"]
+})
+boot_df.to_csv(OUT / "bootstrap_samples.csv", index=False, encoding="utf-8-sig")
+print(f"saved: {OUT/'bootstrap_samples.csv'}")
+
+# Bayesian posterior samples (sub-sample to 10K each, ~250KB total)
+post_df = pd.DataFrame({
+    f"{m}_p30": posteriors[m]["posterior_p30"][:10_000] * 100
+    for m in ["retention_1", "retention_7"]
+})
+for m in ["retention_1", "retention_7"]:
+    post_df[f"{m}_p40"] = posteriors[m]["posterior_p40"][:10_000] * 100
+    post_df[f"{m}_diff_pp"] = posteriors[m]["posterior_diff"][:10_000] * 100
+post_df.to_csv(OUT / "posterior_samples.csv", index=False, encoding="utf-8-sig")
+print(f"saved: {OUT/'posterior_samples.csv'}")
+
+# Game rounds histogram (binned, for fast app rendering)
+bins = np.logspace(0, np.log10(max(1, df["sum_gamerounds"].max())), 60)
+hist_rows = []
+for v in ["gate_30", "gate_40"]:
+    counts, edges = np.histogram(
+        df.loc[df["version"] == v, "sum_gamerounds"][df["sum_gamerounds"] > 0],
+        bins=bins,
+    )
+    for i, c in enumerate(counts):
+        hist_rows.append({"version": v, "bin_low": edges[i], "bin_high": edges[i+1], "count": int(c)})
+gr_hist = pd.DataFrame(hist_rows)
+gr_hist.to_csv(OUT / "gamerounds_histogram.csv", index=False, encoding="utf-8-sig")
+print(f"saved: {OUT/'gamerounds_histogram.csv'}")
+
+# SRM data (single row)
+srm_df = pd.DataFrame([{
+    "n_gate_30": int(n30), "n_gate_40": int(n40),
+    "expected_each": (n30+n40)/2,
+    "chi2": float(srm_chi2), "p_value": float(srm_p),
+    "verdict": "PASS" if srm_p > 0.01 else "FAIL",
+}])
+srm_df.to_csv(OUT / "srm.csv", index=False, encoding="utf-8-sig")
+print(f"saved: {OUT/'srm.csv'}")
+
 # -----------------------------------------------------------------------------
 # 6. Visualizations
 # -----------------------------------------------------------------------------
