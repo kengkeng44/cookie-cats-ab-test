@@ -3,7 +3,7 @@
 > Tactile Games 把 Cookie Cats 卡關門檻從第 30 關移到第 40 關,測試對留存的影響。
 > 用 **Frequentist + Bootstrap + Bayesian** 三種方法分析 90,189 名玩家,給 PM 明確 ship/no-ship 建議。
 
-**🚀 [互動式 Dashboard (Streamlit)](https://github.com/kengkeng44/cookie-cats-ab-test)** · **📑 [面試簡報 PDF](slides/portfolio.pdf)** · **📊 [姊妹作:Olist 電商分析](https://github.com/kengkeng44/olist-project)**
+**🚀 [互動式 Dashboard (Streamlit)](https://cookie-cats-jenho.streamlit.app/)** · **📑 [面試簡報 PDF](slides/portfolio.pdf)** · **📊 [姊妹作:Olist 電商分析](https://github.com/kengkeng44/olist-project)**
 
 **TL;DR**
 1. 🚨 **實驗有 SRM (Sample Ratio Mismatch) 異常,p=0.0086** — 嚴格來說結果不該採信,先請工程查 randomization

@@ -1,5 +1,7 @@
 # Cookie Cats Streamlit Dashboard
 
+**🚀 線上版**:https://cookie-cats-jenho.streamlit.app/
+
 5 分頁互動式 dashboard,把 A/B 測試評估整理成可口語走過的版本。
 
 ## 本機執行

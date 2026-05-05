@@ -188,9 +188,11 @@ Jeffreys prior `Beta(0.5, 0.5)`,200,000 次後驗抽樣
 
 # Q&A
 
+**🚀 互動 Dashboard**: cookie-cats-jenho.streamlit.app
+
 **Repo**: github.com/kengkeng44/cookie-cats-ab-test
 
-**姊妹作 (電商分析)**: github.com/kengkeng44/olist-project
+**姊妹作 (電商分析)**: olist-jenho.streamlit.app · github.com/kengkeng44/olist-project
 
 **重現**: `python notebook/analysis.py`
 
