@@ -1,0 +1,19 @@
+# Data files (download from Kaggle)
+data/*.csv
+data/*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Aggregated outputs are tracked (small)
+!output/*.csv
