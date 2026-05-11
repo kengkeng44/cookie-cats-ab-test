@@ -14,12 +14,19 @@
 
 ## 一、為什麼選這個案子?
 
-PM 履歷上常見的資料分析多半止步於描述性統計(RFM、留存分布)。我這個專案展示**實驗設計與評估**,具體 PM 能力:
-- 看到 A/B 測試結果第一件事是**檢查實驗本身是否有效**(SRM、樣本量、power)
-- 知道「p < 0.05 就 ship」是**錯的** — 要看效應大小、信賴區間、決策成本
-- 用三種統計方法**交叉驗證**,而不是只信一個 p-value
+PM 履歷常見的資料分析多半止步於描述性統計(RFM、留存分布)。我這個專案展示**實驗設計與評估**。
 
-刻意挑遊戲產業(vs 我[Olist 專案](https://github.com/kengkeng44/olist-project)的電商),補 portfolio 廣度。
+**而且,我刻意挑了一個 SRM fail 的案例。**
+
+業界 6-10% 線上實驗會 SRM fail(Microsoft Exp 平台 paper, Fabijan et al. 2019),這不是冷門狀況,是 PM 的日常。挑乾淨數據集只能 demo「會跑 t-test」——挑會出問題的數據集才能 demo:
+
+1. **我會抓 SRM** — 多數 PM 履歷直接看 p-value,我第一步先檢查實驗效度
+2. **我會處理 SRM fail 的決策** — 不藏不忽略,明確標註 limitation,給 contingency plan
+3. **同時還能 demo 三種統計方法** — Frequentist / Bootstrap / Bayesian 交叉驗證,而非因 SRM fail 就停手什麼都不做
+
+這三件事在我看來才是 senior PM 的真正分水嶺。
+
+領域上刻意挑遊戲產業(vs 我[Olist 專案](https://github.com/kengkeng44/olist-project)的電商),補 portfolio 廣度。
 
 ---
 
@@ -173,6 +180,7 @@ Bayesian 給的是「gate_40 比較好」的**直接機率**(Frequentist 無法�
 
 | 你能從中看到 PM 候選人會 | 這個專案怎麼展現 |
 |---|---|
+| 主動選難題而非藏難題 | **刻意挑 SRM fail 的案例**,demo「會抓 + 會處理 + 會判斷」 |
 | 質疑實驗設計而非盲信結果 | 開場就抓 SRM,p=0.0086 |
 | 用多種方法交叉驗證 | Frequentist + Bootstrap + Bayesian 三角驗證 |
 | 區分統計顯著 vs 業務顯著 | Cohen's h、MDE、Power 一起看 |

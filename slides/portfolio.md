@@ -176,6 +176,7 @@ Jeffreys prior `Beta(0.5, 0.5)`,200,000 次後驗抽樣
 
 | 多數 PM 履歷的 A/B 案例 | 我的做法 |
 |---|---|
+| 挑乾淨資料集 demo「會跑 t-test」 | **刻意挑 SRM fail 的案例**,demo「會抓 + 會處理」 |
 | 看 p-value < 0.05 就 conclude | 先檢查 SRM,業界標準作法 |
 | 只用 t-test 或只用 Bayesian | 三方法交叉驗證 |
 | 不算 power | post-hoc power 0.43 → 知道哪個結論不可信 |

@@ -77,6 +77,21 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+with st.expander("💡 為什麼我刻意保留 SRM fail 的分析在 portfolio?"):
+    st.markdown(
+        """
+        業界 **6-10% 的線上實驗會 SRM fail**(Microsoft Exp 平台 paper, Fabijan et al. 2019),
+        這不是冷門狀況,是 PM 日常。挑乾淨數據集只能 demo「會跑 t-test」——
+        挑會出問題的數據集才能 demo 三件事:
+
+        1. **我會抓 SRM** — 多數 PM 履歷直接看 p-value,我第一步先檢查實驗效度
+        2. **我會處理 SRM fail 的決策** — 不藏不忽略,明確標註 limitation
+        3. **同時還能 demo 三種統計方法** — 而非因 SRM fail 就停手什麼都不做
+
+        這三件事在我看來才是 senior PM 的真正分水嶺。
+        """
+    )
+
 st.divider()
 
 st.subheader("🔬 若忽略 SRM 強行分析:三種方法都指向同一結論")
