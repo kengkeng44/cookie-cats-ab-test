@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自戀心理學：理論與應用全景</title>
+<style>
+  :root {
+    --primary: #2c5f8d;
+    --accent: #d4825a;
+    --soft: #f4ede4;
+    --bg: #fafaf7;
+    --text: #2d2d2d;
+    --muted: #6b6b6b;
+    --freud: #8b4a6b;
+    --kernberg: #2c5f8d;
+    --kohut: #5a8c4a;
+    --modern: #c97b3c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(135deg, var(--primary), #1e4a6f);
+    color: white;
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.4rem;
+    margin: 0 0 12px;
+    letter-spacing: 1px;
+  }
+  header .subtitle {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+  .toc {
+    background: white;
+    border-left: 4px solid var(--primary);
+    padding: 20px 28px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .toc h3 { margin-top: 0; color: var(--primary); }
+  .toc ol { margin: 0; padding-left: 22px; }
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px dotted #aaa;
+  }
+  .toc a:hover { color: var(--accent); border-color: var(--accent); }
+  h2 {
+    color: var(--primary);
+    font-size: 1.7rem;
+    border-bottom: 2px solid var(--soft);
+    padding-bottom: 10px;
+    margin-top: 56px;
+  }
+  h3 {
+    color: #34495e;
+    font-size: 1.25rem;
+    margin-top: 32px;
+  }
+  .intro {
+    background: var(--soft);
+    padding: 20px 24px;
+    border-radius: 12px;
+    font-size: 1.02rem;
+    margin-bottom: 30px;
+  }
+  .theorist-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--primary);
+  }
+  .theorist-card.freud { border-top-color: var(--freud); }
+  .theorist-card.kernberg { border-top-color: var(--kernberg); }
+  .theorist-card.kohut { border-top-color: var(--kohut); }
+  .theorist-card.modern { border-top-color: var(--modern); }
+  .theorist-card h3 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+  }
+  .badge.freud { background: var(--freud); }
+  .badge.kernberg { background: var(--kernberg); }
+  .badge.kohut { background: var(--kohut); }
+  .badge.modern { background: var(--modern); }
+  .key-point {
+    background: #fff8ec;
+    border-left: 4px solid var(--accent);
+    padding: 12px 18px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.98rem;
+  }
+  .key-point strong { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: #fafafa; }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .compare-card {
+    padding: 18px 22px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .compare-card.left { border-left: 5px solid var(--kernberg); }
+  .compare-card.right { border-left: 5px solid var(--kohut); }
+  .compare-card h4 { margin-top: 0; color: var(--primary); }
+  .needs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .need-box {
+    background: linear-gradient(135deg, #f0f7ed, #e3f0dd);
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--kohut);
+  }
+  .need-box .emoji { font-size: 1.8rem; margin-bottom: 6px; }
+  .need-box h5 {
+    margin: 6px 0;
+    color: var(--kohut);
+    font-size: 1.05rem;
+  }
+  .need-box p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .subtype-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .subtype-box {
+    padding: 20px 24px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .subtype-box.grandiose {
+    background: linear-gradient(135deg, #fff3e6, #ffe6cc);
+    border: 2px solid #d97f3a;
+  }
+  .subtype-box.vulnerable {
+    background: linear-gradient(135deg, #e8eef6, #d4dfee);
+    border: 2px solid #4a6b8c;
+  }
+  .subtype-box h4 { margin-top: 0; font-size: 1.15rem; }
+  .strategy-list {
+    list-style: none;
+    padding: 0;
+  }
+  .strategy-list li {
+    background: white;
+    margin: 10px 0;
+    padding: 14px 18px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border-left: 3px solid var(--accent);
+  }
+  .strategy-list .num {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+  .cycle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    gap: 8px;
+  }
+  .cycle-step {
+    flex: 1;
+    min-width: 110px;
+    padding: 14px 8px;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .cycle-arrow {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .quote {
+    font-style: italic;
+    background: var(--soft);
+    padding: 16px 22px;
+    border-radius: 8px;
+    margin: 18px 0;
+    color: #555;
+  }
+  .warning {
+    background: #fff4f4;
+    border: 1px solid #f5c6c6;
+    border-left: 4px solid #c0392b;
+    padding: 14px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+  }
+  .insight {
+    background: linear-gradient(135deg, #fefaf0, #fff4d9);
+    padding: 18px 22px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #e8b73c;
+  }
+  .insight strong { color: #b08530; }
+  .sources {
+    background: white;
+    padding: 24px 28px;
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .sources h2 { margin-top: 0; }
+  .sources ul { padding-left: 20px; }
+  .sources li { margin: 6px 0; font-size: 0.95rem; }
+  .sources a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid #cdd9e3;
+  }
+  .sources a:hover { color: var(--accent); border-color: var(--accent); }
+  .source-group { margin: 16px 0; }
+  .source-group h4 { color: var(--accent); margin: 12px 0 6px; }
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  @media (max-width: 700px) {
+    .compare-grid, .needs-grid, .subtype-grid {
+      grid-template-columns: 1fr;
+    }
+    header h1 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>自戀心理學：理論與應用全景</h1>
+  <div class="subtitle">Narcissism in Psychology — Theory, Subtypes & Practical Applications</div>
+</header>
+
+<div class="container">
+
+<div class="intro">
+  <strong>怎麼讀這份文件？</strong>
+  自戀（narcissism）在心理學中既是<strong>正常發展現象</strong>，也是<strong>人格病理</strong>。
+  本文從三大理論家出發 → 拆解現代亞型 → 走到臨床治療 → 最後落到日常生活與職場的因應方式。
+  每一節都有「為什麼重要」和「怎麼用」。
+</div>
+
+<div class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#theory">核心理論演進（Freud、Kernberg、Kohut）</a></li>
+    <li><a href="#subtypes">當代自戀亞型：誇大型 vs. 脆弱型</a></li>
+    <li><a href="#assessment">評估工具</a></li>
+    <li><a href="#therapy">臨床應用：治療取向比較</a></li>
+    <li><a href="#daily">日常與職場的應用</a></li>
+    <li><a href="#insight">關鍵洞見</a></li>
+    <li><a href="#sources">參考來源</a></li>
+  </ol>
+</div>
+
+<!-- ============ 1. THEORY ============ -->
+<h2 id="theory">一、核心理論演進</h2>
+<p>了解三位奠基者的差異，等於拿到一張「自戀地圖」。</p>
+
+<div class="theorist-card freud">
+  <h3><span class="badge freud">1914</span> Freud 佛洛伊德：自戀是發展階段</h3>
+  <p>出自《論自戀：導論》(<em>On Narcissism: An Introduction</em>)，是現代自戀研究的起點。</p>
+  <ul>
+    <li><strong>原始自戀（primary narcissism）</strong>：嬰兒早期把心理能量（libido）投注在自己身上，正常且必要。</li>
+    <li><strong>次發自戀（secondary narcissism）</strong>：能量從外在客體撤回到自我（如失戀後封閉自己）。</li>
+    <li>首次區分「正常自戀」與「病態自戀」。</li>
+  </ul>
+  <div class="key-point">
+    <strong>為什麼重要：</strong>之後所有理論都在回答 Freud 留下的問題——自戀從正常變成病態，是哪裡出了問題？
+  </div>
+</div>
+
+<div class="theorist-card kernberg">
+  <h3><span class="badge kernberg">1970s</span> Kernberg 克恩伯格：自戀是防衛</h3>
+  <p>整合英國客體關係學派 + 美國自我心理學，是美國主流取向。</p>
+  <ul>
+    <li>病態自戀來自「誇大自體（grandiose self）」融合了<strong>真實自我、理想自我、理想客體</strong>。</li>
+    <li>好客體與壞客體未整合 → 內在分裂。</li>
+    <li>屬於「<strong>恐懼論（phobia theory）</strong>」：自戀是對脆弱、依賴、羞愧的<strong>防衛</strong>。</li>
+  </ul>
+  <div class="key-point">
+    <strong>治療策略：</strong>主動<strong>面質（confront）</strong>誇大自體的防衛功能，把分裂整合進健康人格。
+  </div>
+</div>
+
+<div class="theorist-card kohut">
+  <h3><span class="badge kohut">1971</span> Kohut 科胡特：自戀是被中斷的發展</h3>
+  <p>自體心理學（Self Psychology）的創立者，立場與 Kernberg 相反。</p>
+  <ul>
+    <li>自戀本身<strong>不是病態</strong>，是發展的正常階段。</li>
+    <li>病態自戀來自早期照顧者未能滿足三大自體客體（selfobject）需求。</li>
+    <li>屬於「<strong>創傷論（trauma theory）</strong>」：自戀來自衝擊、失落、虐待或剝奪。</li>
+  </ul>
+
+  <h4 style="color: var(--kohut); margin-top: 20px;">三大自體客體需求</h4>
+  <div class="needs-grid">
+    <div class="need-box">
+      <div class="emoji">&#x1F94A;</div>
+      <h5>鏡映 Mirroring</h5>
+      <p>「我被看見、被肯定」<br>→ 建立自我價值感</p>
+    </div>
+    <div class="need-box">
+      <div class="emoji">&#x1F31F;</div>
+      <h5>理想化 Idealization</h5>
+      <p>「有可依靠、可仿效的對象」<br>→ 建立內在標準</p>
+    </div>
+    <div class="need-box">
+      <div class="emoji">&#x1F46C;</div>
+      <h5>孿生 Twinship</h5>
+      <p>「有人跟我一樣」<br>→ 建立歸屬感</p>
+    </div>
+  </div>
+
+  <div class="key-point">
+    <strong>治療策略：</strong>以<strong>同理（empathy）</strong>作為核心，提供修復性的自體客體經驗，讓中斷的發展重新啟動。
+  </div>
+</div>
+
+<h3>Kernberg vs. Kohut：一張圖看懂差異</h3>
+<div class="compare-grid">
+  <div class="compare-card left">
+    <h4>Kernberg（恐懼論）</h4>
+    <ul>
+      <li>自戀 = 防衛機制</li>
+      <li>病因：內在客體分裂</li>
+      <li>治療態度：<strong>面質、解構</strong></li>
+      <li>誇大自體是病態，必須拆解</li>
+    </ul>
+  </div>
+  <div class="compare-card right">
+    <h4>Kohut（創傷論）</h4>
+    <ul>
+      <li>自戀 = 發展受阻</li>
+      <li>病因：早期同理性失敗</li>
+      <li>治療態度：<strong>同理、容納</strong></li>
+      <li>誇大自體是常態，需要被滋養成熟</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 2. SUBTYPES ============ -->
+<h2 id="subtypes">二、當代自戀亞型</h2>
+<p>現代研究不再把自戀當成單一向度，而是兩個（甚至更多）面貌。</p>
+
+<div class="subtype-grid">
+  <div class="subtype-box grandiose">
+    <h4>&#x1F451; 誇大型 Grandiose</h4>
+    <ul>
+      <li>外向、自信、權威感</li>
+      <li>情緒穩定的外向者</li>
+      <li>自尊高、生活滿意度高</li>
+      <li>較少憂鬱、焦慮</li>
+      <li>以「追求讚美 admiration」為策略</li>
+    </ul>
+  </div>
+  <div class="subtype-box vulnerable">
+    <h4>&#x1F311; 脆弱型 Vulnerable</h4>
+    <ul>
+      <li>內向、敏感、退縮</li>
+      <li>神經質的內向者</li>
+      <li>自尊低、易羞愧</li>
+      <li>常憂鬱、焦慮</li>
+      <li>以「避免威脅 rivalry」為策略</li>
+    </ul>
+  </div>
+</div>
+
+<h3>更新的多元模型</h3>
+<table>
+  <tr><th>模型</th><th>內容</th></tr>
+  <tr><td><strong>自戀光譜模型</strong></td><td>誇大與脆弱在同一個體內可<strong>振盪交替</strong>。</td></tr>
+  <tr><td><strong>三分模型 Trifurcated</strong></td><td>誇大（agentic extraversion）／脆弱（neuroticism）／敵意特權（entitlement-antagonism）三大維度。</td></tr>
+  <tr><td><strong>四亞型 (2025)</strong></td><td>潛在剖面分析發現第四種「<strong>誇大-脆弱混合型</strong>」。</td></tr>
+  <tr><td><strong>黑暗三角 Dark Triad</strong></td><td>自戀 + 馬基維利主義 + 精神病態，常一起出現在領導力與操弄行為研究中。</td></tr>
+</table>
+
+<!-- ============ 3. ASSESSMENT ============ -->
+<h2 id="assessment">三、評估工具</h2>
+<table>
+  <tr><th>量表</th><th>對應構念</th><th>備註</th></tr>
+  <tr><td>NPI (Narcissistic Personality Inventory)</td><td>誇大型</td><td>最廣泛使用</td></tr>
+  <tr><td>NARQ</td><td>誇大型（讚美 vs. 競爭）</td><td>分離「Admiration / Rivalry」</td></tr>
+  <tr><td>HSNS (Hypersensitive Narcissism Scale)</td><td>脆弱型</td><td>10 題，易施測</td></tr>
+  <tr><td>PNI (Pathological Narcissism Inventory)</td><td>病態自戀</td><td>同時測誇大與脆弱</td></tr>
+  <tr><td>NVS (Narcissistic Vulnerability Scale)</td><td>脆弱型</td><td>較新的補充工具</td></tr>
+</table>
+
+<!-- ============ 4. THERAPY ============ -->
+<h2 id="therapy">四、臨床應用：治療取向比較</h2>
+
+<table>
+  <tr><th>取向</th><th>來源</th><th>核心技術</th></tr>
+  <tr>
+    <td><strong>TFP</strong><br>移情焦點治療</td>
+    <td>Kernberg<br>客體關係</td>
+    <td>在治療關係中即時解構誇大自體，整合好/壞客體表徵</td>
+  </tr>
+  <tr>
+    <td><strong>自體心理學治療</strong></td>
+    <td>Kohut</td>
+    <td>提供共感性自體客體經驗，允許鏡映、理想化、孿生移情，讓中斷發展重啟</td>
+  </tr>
+  <tr>
+    <td><strong>MBT</strong><br>心智化基礎治療</td>
+    <td>Bateman & Fonagy</td>
+    <td>從「Me-mode」轉向「We-mode」，培養反思自己與他人心理狀態的能力</td>
+  </tr>
+  <tr>
+    <td><strong>基模治療 Schema Therapy</strong></td>
+    <td>Young</td>
+    <td>修補自戀基模（特權、缺陷／羞愧、嚴苛標準）並改變應對模式</td>
+  </tr>
+  <tr>
+    <td><strong>CBT / 短期目標導向</strong></td>
+    <td>Beck 等</td>
+    <td>挑戰認知扭曲、增加同理行為與情緒識別</td>
+  </tr>
+  <tr>
+    <td><strong>DBT</strong><br>辯證行為治療</td>
+    <td>Linehan</td>
+    <td>情緒調節、人際效能（常用於合併邊緣型特質者）</td>
+  </tr>
+</table>
+
+<div class="warning">
+  <strong>&#x26A0;&#xFE0F; 臨床現實：</strong>
+  目前<strong>沒有 FDA 認可的 NPD 藥物</strong>；藥物只處理共病（憂鬱、焦慮、情緒障礙）。
+  NPD 患者的<strong>治療脫落率高達 63–64%</strong>，關鍵在於建立並維持治療同盟（不能太早面質、不能踩到羞愧開關）。
+</div>
+
+<!-- ============ 5. DAILY ============ -->
+<h2 id="daily">五、日常與職場的應用</h2>
+
+<h3>A. 辨識自戀者的關係循環</h3>
+<div class="cycle">
+  <div class="cycle-step">愛轟炸<br>Love Bombing</div>
+  <div class="cycle-arrow">→</div>
+  <div class="cycle-step">貶低<br>Devalue</div>
+  <div class="cycle-arrow">→</div>
+  <div class="cycle-step">冷暴力／煤氣燈<br>Gaslighting</div>
+  <div class="cycle-arrow">→</div>
+  <div class="cycle-step">丟棄<br>Discard</div>
+</div>
+<p style="text-align:center; color:var(--muted); font-size:0.95rem;">辨識這個循環本身就是脫離它的第一步。</p>
+
+<h3>B. 與自戀者相處的 7 個策略</h3>
+<ul class="strategy-list">
+  <li><span class="num">1</span><strong>設定明確界線：</strong>用「如果你 X，我就會 Y」的句型，並徹底執行。</li>
+  <li><span class="num">2</span><strong>灰石法（Grey Rock）：</strong>減少情緒反應，不提供「自戀供給」。</li>
+  <li><span class="num">3</span><strong>情緒抽離：</strong>保持冷靜中性，讓對方拿不到燃料。</li>
+  <li><span class="num">4</span><strong>理解動機而非接受行為：</strong>他們的攻擊多源自深層不安全感，<strong>理解 ≠ 縱容</strong>。</li>
+  <li><span class="num">5</span><strong>建立外部支持系統：</strong>避免孤立、強化現實檢驗。</li>
+  <li><span class="num">6</span><strong>降低接觸或切斷：</strong>持續虐待時，離開是合理選擇。</li>
+  <li><span class="num">7</span><strong>必要時尋求專業協助：</strong>個別治療能修復被侵蝕的自尊與現實感。</li>
+</ul>
+
+<h3>C. 職場與領導現象</h3>
+<table>
+  <tr><th>觀察</th><th>研究發現</th></tr>
+  <tr><td>升遷</td><td>黑暗三角者特別容易爬到領導位置，無論自評或部屬評分都顯示。</td></tr>
+  <tr><td>面試表現</td><td>自戀者面試表現往往很好——積極、能幹、有趣、適應力強。</td></tr>
+  <tr><td>負面後果</td><td>職場霸凌增加、收入下滑、員工承諾與創造力下降。</td></tr>
+  <tr><td>少數正向情境</td><td>高度競爭、需快速決策的環境中，誇大型自戀者的自信與說服力可能短期有利。</td></tr>
+  <tr><td>組織介入</td><td>360 度評核、心理安全文化、定期領導力評估、匿名回饋管道。</td></tr>
+</table>
+
+<!-- ============ 6. INSIGHT ============ -->
+<h2 id="insight">六、關鍵洞見</h2>
+
+<div class="insight">
+  <strong>洞見 1：自戀是光譜，不是標籤。</strong>
+  健康自尊和病態自戀不是「有/沒有」的二分，而是程度與情境的差異。重點不是貼標籤，而是<strong>覺察行為模式</strong>。
+</div>
+
+<div class="insight">
+  <strong>洞見 2：誇大背後常是羞愧。</strong>
+  Kohut 的觀點解釋了為什麼自戀者對批評反應強烈——他們的誇大不是「太多自尊」，而是<strong>用誇大來填補羞愧的洞</strong>。
+</div>
+
+<div class="insight">
+  <strong>洞見 3：理解 ≠ 縱容。</strong>
+  知道一個人的攻擊來自不安全感，不代表你必須繼續被傷害。設定界線是最大的同理——對自己，也對對方。
+</div>
+
+<div class="insight">
+  <strong>洞見 4：自我覺察是入口。</strong>
+  Kohut 觀點下，<strong>承認自己有自戀需求是健康的第一步</strong>。重點不是消滅這些需求，而是讓它們<strong>成熟化</strong>——從依賴掌聲，到內在價值穩定。
+</div>
+
+<div class="quote">
+  「健康自尊不需要貶低他人才能成立。」這句話可作為日常檢驗自己（或他人）自戀程度的試金石。
+</div>
+
+<!-- ============ SOURCES ============ -->
+<div class="sources" id="sources">
+<h2 style="border:none; margin-top:0;">參考來源</h2>
+
+<div class="source-group">
+  <h4>理論基礎</h4>
+  <ul>
+    <li><a href="https://www.sakkyndig.com/psykologi/artvit/russell1985.pdf" target="_blank">Kernberg 與 Kohut 自戀理論比較 (Russell, 1985)</a></li>
+    <li><a href="https://www.acat.org.uk/resources/reformulation-articles/narcissism-from-kohut-to-cat" target="_blank">Narcissism: From Kohut to CAT (ACAT)</a></li>
+    <li><a href="https://mindforest.ai/zh-hk/post/self-psychology" target="_blank">什麼是自體心理學 (MindForest)</a></li>
+    <li><a href="https://jiandepsy.com/heinz-kohut/" target="_blank">寇哈特：自體心理學之父（李建德心理師）</a></li>
+    <li><a href="https://www.journal-psychoanalysis.eu/articles/narcissism-the-american-contribution/" target="_blank">Narcissism: The American Contribution</a></li>
+  </ul>
+</div>
+
+<div class="source-group">
+  <h4>亞型研究</h4>
+  <ul>
+    <li><a href="https://scottbarrykaufman.com/wp-content/uploads/2025/02/Mapels-et-al-2025-Profiling-narcissism_-Evidence-for-grandiose-vulnerable-and-other-subtypes-1.pdf" target="_blank">Profiling Narcissism: G-V and Other Subtypes (Maples/Kaufman, 2025)</a></li>
+    <li><a href="https://compass.onlinelibrary.wiley.com/doi/full/10.1111/spc3.12977" target="_blank">Conceptualizing Grandiose & Vulnerable Narcissism (Mahadevan, 2024)</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6120976/" target="_blank">Narcissism & Emotional Intelligence (PMC)</a></li>
+  </ul>
+</div>
+
+<div class="source-group">
+  <h4>臨床治療</h4>
+  <ul>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10187400/" target="_blank">NPD: Progress in Understanding and Treatment (PMC)</a></li>
+    <li><a href="https://www.apa.org/pubs/journals/features/pap-pap0000145.pdf" target="_blank">TFP for Narcissistic Personality (APA)</a></li>
+    <li><a href="https://psychiatryonline.org/doi/full/10.1176/appi.psychotherapy.20210017" target="_blank">Mentalizing Approach for NPD: Me-mode to We-mode (AJP)</a></li>
+    <li><a href="https://www.mayoclinic.org/diseases-conditions/narcissistic-personality-disorder/diagnosis-treatment/drc-20366690" target="_blank">Mayo Clinic — NPD Diagnosis & Treatment</a></li>
+    <li><a href="https://www.health.harvard.edu/mind-and-mood/narcissistic-personality-disorder-symptoms-diagnosis-and-treatments" target="_blank">Harvard Health — NPD Symptoms & Treatments</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK556001/" target="_blank">StatPearls — Narcissistic Personality Disorder</a></li>
+  </ul>
+</div>
+
+<div class="source-group">
+  <h4>職場與領導</h4>
+  <ul>
+    <li><a href="https://www.mdpi.com/2076-328X/15/3/297" target="_blank">Dark Triad in Leadership: Systematic Review (MDPI, 2025)</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5437163/" target="_blank">Leader Narcissism and Organizational Outcomes (PMC)</a></li>
+    <li><a href="https://www.colindellis.com/blog/impact-narcissistic-psychopathic-machiavellian-traits-workplace" target="_blank">The Dark Triad Toxic Leaders — Colin D Ellis</a></li>
+  </ul>
+</div>
+
+<div class="source-group">
+  <h4>因應策略（中／英）</h4>
+  <ul>
+    <li><a href="https://www.healthline.com/health/how-to-deal-with-a-narcissist" target="_blank">How to Deal with a Narcissist (Healthline)</a></li>
+    <li><a href="https://www.charliehealth.com/post/how-to-set-boundaries-with-a-narcissist" target="_blank">Setting Boundaries with a Narcissist (Charlie Health)</a></li>
+    <li><a href="https://www.headspace.com/articles/how-to-deal-with-a-narcissist" target="_blank">10 Tips from Experts (Headspace)</a></li>
+    <li><a href="https://womany.net/read/article/27972" target="_blank">女人迷 — 自戀型同事 7 個技巧</a></li>
+    <li><a href="https://alankrantas.medium.com/%E9%9D%A2%E5%B0%8D%E8%87%AA%E6%88%80%E5%9E%8B%E5%90%8C%E4%BA%8B%E7%9A%84%E8%81%B7%E5%A0%B4%E8%87%AA%E4%BF%9D%E6%8C%87%E5%8D%97-013a7ee862d4" target="_blank">面對自戀型同事的職場自保指南 (Medium)</a></li>
+    <li><a href="https://www.cw.com.tw/article/5114499" target="_blank">天下雜誌 — 自戀從來不是自滿，而是自欺欺人</a></li>
+  </ul>
+</div>
+
+</div>
+
+<footer>
+  研究整理 ・ 自戀心理學理論與應用 ・ 2026
+</footer>
+
+</div>
+
+</body>
+</html>
